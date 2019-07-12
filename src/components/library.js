@@ -6,7 +6,8 @@ class Library extends Component {
     super(props);
     this.state = {
       categories: [],
-      books: []
+      books: [],
+      selectedCategory: false
     }
   }
   componentDidMount() {
@@ -31,12 +32,27 @@ class Library extends Component {
       });
   }
 
+  setCategory(categoryId){
+    this.setState({
+      selectedCategory: categoryId
+    })
+  }
+
   render() {
     const categoryListDom = this.state.categories.map((category) => {
-      return <li key={category.id}>{category.title}</li>
+      return <li key={category.id} onClick={() => { this.setCategory(category.id) }}>{category.title}</li>
     })
 
-    const bookListDom = this.state.books.map((book) => {
+    const bookListDom = this.state
+    .books
+    .filter((book) => {
+      if(this.state.selectedCategory){
+        return book.category_id === this.state.selectedCategory
+      }else{
+        return true
+      }
+    })
+    .map((book) => {
       return <li key={book.id}>
       <img width= '80px' alt='bookImage' src={book.image_url} />
       <Link to= {`/book/${book.id}`}>{book.title}</Link>
