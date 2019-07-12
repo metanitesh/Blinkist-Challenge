@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Library extends Component {
+  _isRedirect = false;
+
   constructor(props){
     super(props);
     this.state = {
@@ -10,15 +12,26 @@ class Library extends Component {
       selectedCategory: false
     }
   }
+
+  componentWillMount(){
+    if(!this.props.authStatus){
+      this.props.history.push('/')
+      this._isRedirect = true;
+    }
+  }
+
   componentDidMount() {
-    fetch("https://ancient-springs-73658.herokuapp.com/categories")
+    if(!this._isRedirect){
+      fetch("https://ancient-springs-73658.herokuapp.com/categories")
       .then((response) => {
         return response.json();
       })
       .then((myJson) =>{
-        this.setState({
-          categories: myJson.categories
-        })
+        
+          this.setState({
+            categories: myJson.categories
+          })
+        
       });
 
       fetch("https://ancient-springs-73658.herokuapp.com/books")
@@ -26,10 +39,17 @@ class Library extends Component {
         return response.json();
       })
       .then((myJson) =>{
-        this.setState({
-          books: myJson.books
-        })
+        
+          this.setState({
+            books: myJson.books
+          })
+        
       });
+    }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   setCategory(categoryId){
@@ -39,6 +59,13 @@ class Library extends Component {
   }
 
   render() {
+
+      // if (this.props.authStatus === false) {
+      //   return <Redirect to='/home' />
+      // }
+
+
+
     const categoryListDom = this.state.categories.map((category) => {
       return <li key={category.id} onClick={() => { this.setCategory(category.id) }}>{category.title}</li>
     })
