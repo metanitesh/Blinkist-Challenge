@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      authenticated : false,
+      authenticated : true,
       userId: null,
       accessType:'free'
     }
@@ -23,21 +23,23 @@ class App extends Component {
   login(userId){
     this.setState({
       authenticated : true,
-      userId : userId
+      userId : userId,
+      accessType:'free'
     })
   }
 
   logout(){
     this.setState({
       authenticated: false,
-      userId : null
+      userId : null,
+      accessType:'free'
     })
   }
 
   render() {
     return (
       <React.Fragment>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} authStatus={this.state.authenticated} login={this.login}/>} />
           <Route exact path="/library" render={(props) => <Library {...props} logout={this.logout} authStatus={this.state.authenticated}/>}/>

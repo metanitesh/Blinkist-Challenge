@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from './header'
+import style from './book.module.css'
 
 class Book extends Component {
   _isRedirect = false;
@@ -41,11 +43,12 @@ class Book extends Component {
 
     return (
       <>
-      <button onClick={this.logout}> logout </button>
-      <div>
-        <h1>{this.state.book.title || 'loading...'}</h1>
-        <p>{this.state.book.content}</p>
-      </div>
+      <Header pageName="Discover Books"/>
+      <button className='logout' onClick={this.logout}> logout </button>
+      <main className={style.container}>
+        <h1 className={style.heading}>{this.state.book.title || 'loading...'}</h1>
+        <p className={style.paragraph}>{this.state.book.content}</p>
+      </main>
       </>
     );
   }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import style from './home.module.css';
+import Header from './header'
 
 class Home extends Component {
 
   constructor(props){
     super(props);
-
     this.login = this.login.bind(this)
   }
   
@@ -25,11 +26,14 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <>
+      <Header pageName='Log in'/>
+      <main className={style.main}>
         <form onSubmit={this.login}>
-          <button>Login</button>
+          <button className={style.button}>Login</button>
         </form>
-      </div>
+      </main>
+      </>
     );
   }
 }

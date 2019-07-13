@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Header from "./header"
+import style from "./library.module.css"
 
 class Library extends Component {
   _isRedirect = false;
@@ -79,23 +81,25 @@ class Library extends Component {
     })
     .map((book) => {
       return <li key={book.id}>
-      <img width= '80px' alt='bookImage' src={book.image_url} />
-      <Link to= {`/book/${book.id}`}>{book.title}</Link>
+      <img width= '100px' alt='bookImage' src={book.image_url} />
+      <h5>{book.title}</h5>
+      <Link to= {`/book/${book.id}`}>Read</Link>
       </li>
     })
 
     
     return (
       <>
-      <button onClick={this.logout}> logout </button>
-      <div>
-        <h1>Library Contents</h1>
-        <h3>Categories</h3>
-        <ul>{categoryListDom}</ul>
-        <h3>Books</h3>
-        <ul>{bookListDom}</ul>
-        
-      </div>
+      <Header pageName="discovery"/>
+      <button className='logout' onClick={this.logout}> logout </button>
+      <main className={style.library}>
+        <section className={style.categories}>
+          <ul>{categoryListDom}</ul>
+        </section>
+        <section className={style.books}>
+          <ul>{bookListDom}</ul>
+        </section>
+      </main>
       </>
     );
   }
