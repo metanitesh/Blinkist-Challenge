@@ -7,10 +7,10 @@
 
 .button{
   background: #67E081;
-    color: black;
-    padding: 10px 25px;
-    border: none;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
+  color: black;
+  padding: 10px 25px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
 }

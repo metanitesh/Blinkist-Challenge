@@ -90,7 +90,7 @@ class Library extends Component {
     
     return (
       <>
-      <Header pageName="discovery"/>
+      <Header pageName="discovery" accessType={this.props.accessType}/>
       <button className='logout' onClick={this.logout}> logout </button>
       <main className={style.library}>
         <section className={style.categories}>

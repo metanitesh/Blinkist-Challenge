@@ -34,21 +34,37 @@ class Book extends Component {
     }
   }
 
+  subscribe(){
+    this.props.subscribe();
+  }
+
   logout(){
     this.props.logout();
     this.props.history.push('/')   
   }
 
   render() {
+    let cta = '';
+    if(this.props.accessType === 'Free'){
+      cta = 
+        <section className={style.ctaScreen}> 
+          <button onClick= {this.props.subscribe} className={style.button}>Subscribe to Read</button>
+        </section>
+    }
+    
+    
 
     return (
       <>
-      <Header pageName="Discover Books"/>
+
+      <Header pageName="Discover Books" accessType= {this.props.accessType}/>
       <button className='logout' onClick={this.logout}> logout </button>
       <main className={style.container}>
         <h1 className={style.heading}>{this.state.book.title || 'loading...'}</h1>
         <p className={style.paragraph}>{this.state.book.content}</p>
+        <p className={style.paragraph}>{this.state.book.content}</p>
       </main>
+      {cta}
       </>
     );
   }
