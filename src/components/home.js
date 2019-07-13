@@ -17,10 +17,8 @@ class Home extends Component {
     })
     .then((response) => response.json())
     .then((myJson) => {
-      console.log(this);
-      console.log(myJson);
-      console.log(this);
       this.props.login(myJson.user_id);
+      this.props.history.push('/library');
     })
 
   }

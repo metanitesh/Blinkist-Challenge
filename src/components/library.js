@@ -11,6 +11,9 @@ class Library extends Component {
       books: [],
       selectedCategory: false
     }
+  
+    this.logout = this.logout.bind(this);
+  
   }
 
   componentWillMount(){
@@ -48,24 +51,19 @@ class Library extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   setCategory(categoryId){
     this.setState({
       selectedCategory: categoryId
     })
   }
 
+  logout(){
+    this.props.logout();
+    this.props.history.push('/')   
+  }
+
+
   render() {
-
-      // if (this.props.authStatus === false) {
-      //   return <Redirect to='/home' />
-      // }
-
-
-
     const categoryListDom = this.state.categories.map((category) => {
       return <li key={category.id} onClick={() => { this.setCategory(category.id) }}>{category.title}</li>
     })
@@ -86,19 +84,19 @@ class Library extends Component {
       </li>
     })
 
-
+    
     return (
+      <>
+      <button onClick={this.logout}> logout </button>
       <div>
         <h1>Library Contents</h1>
         <h3>Categories</h3>
         <ul>{categoryListDom}</ul>
         <h3>Books</h3>
         <ul>{bookListDom}</ul>
-        <p>
-          <Link to="/book/1">book</Link>
-        </p>
         
       </div>
+      </>
     );
   }
 }

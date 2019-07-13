@@ -38,11 +38,10 @@ class App extends Component {
     return (
       <React.Fragment>
         <Nav />
-        <button onClick={this.logout}> logout </button>
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} authStatus={this.state.authenticated} login={this.login}/>} />
-          <Route exact path="/library" render={(props) => <Library {...props} authStatus={this.state.authenticated}/>}/>
-          <Route exact path="/book/:id" render={(props) => <Book {...props} authStatus={this.state.authenticated}/>}/>
+          <Route exact path="/library" render={(props) => <Library {...props} logout={this.logout} authStatus={this.state.authenticated}/>}/>
+          <Route exact path="/book/:id" render={(props) => <Book {...props} logout={this.logout} authStatus={this.state.authenticated}/>}/>
         </Switch>
 
       </React.Fragment>      
