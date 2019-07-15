@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
-import Header from './header'
+import Header from './../header/header'
 
 class Home extends Component {
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from './components/home';
-import Library from './components/library';
-import Book from './components/book';
+import Home from '../home/home';
+import Library from '../library/library';
+import Book from '../book/book';
 
 class App extends Component {
 
