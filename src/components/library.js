@@ -31,10 +31,9 @@ class Library extends Component {
       .then((response) => {
         return response.json();
       })
-      .then((myJson) =>{
-        
+      .then((response) =>{
           this.setState({
-            categories: myJson.categories
+            categories: response.categories
           })
         
       });
@@ -43,10 +42,9 @@ class Library extends Component {
       .then((response) => {
         return response.json();
       })
-      .then((myJson) =>{
-        
+      .then((response) =>{        
           this.setState({
-            books: myJson.books
+            books: response.books
           })
         
       });
@@ -81,9 +79,11 @@ class Library extends Component {
     })
     .map((book) => {
       return <li key={book.id}>
-      <img width= '100px' alt='bookImage' src={book.image_url} />
+      <Link to= {`/book/${book.id}`}>
+      <img  alt='bookImage' src={book.image_url} />
       <h5>{book.title}</h5>
-      <Link to= {`/book/${book.id}`}>Read</Link>
+      <p className={style.read}>Read</p>
+      </Link>
       </li>
     })
 

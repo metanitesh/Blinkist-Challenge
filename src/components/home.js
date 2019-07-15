@@ -9,6 +9,12 @@ class Home extends Component {
     this.login = this.login.bind(this)
   }
   
+  componentDidMount(){
+    if(this.props.authStatus){
+      this.props.history.push('/library');
+    }
+  }
+
   login(e){
     e.preventDefault();
     const url = 'https://ancient-springs-73658.herokuapp.com/auth';
@@ -17,8 +23,8 @@ class Home extends Component {
       method: 'POST'
     })
     .then((response) => response.json())
-    .then((myJson) => {
-      this.props.login(myJson.user_id);
+    .then((response) => {
+      this.props.login(response.user_id);
       this.props.history.push('/library');
     })
 

@@ -15,11 +15,13 @@ code {
 .logout{
     background: #67E081;
     color: black;
-    padding: 3px 10px;
+    padding: 6px 20px;
     border: none;
     font-weight: bold;
     cursor: pointer;
     position: absolute;
     top:0px;
     right:0px;
+    font-size: 20px;
+
 }

@@ -4,13 +4,12 @@
 }
 
 .heading{
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .paragraph{
-  font-size: 10px;
-  text-indent: 20px;
-  line-height: 15px;
+  font-size: 18px;
+  line-height: 32px;
 }
 
 .ctaScreen{
@@ -32,10 +31,10 @@
 .button{
   background: #67E081;
   color: black;
-  padding: 10px 25px;
+  font-size: 30px;
+  padding: 20px 35px;
   border: none;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  
 }
