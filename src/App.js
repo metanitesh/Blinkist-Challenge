@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './components/home';
 import Library from './components/library';
 import Book from './components/book';
@@ -45,12 +45,13 @@ class App extends Component {
   render() {
     return (
       <>
-        <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} authStatus={this.state.authenticated} login={this.login}/>} />
-          <Route exact path="/library" render={(props) => <Library {...props} logout={this.logout} accessType={this.state.accessType} authStatus={this.state.authenticated}/>}/>
-          <Route exact path="/book/:id" render={(props) => <Book {...props} logout={this.logout} accessType={this.state.accessType} subscribe={this.subscribe} authStatus={this.state.authenticated}/>}/>
-        </Switch>
-
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" render={(props) => <Home {...props} authStatus={this.state.authenticated} login={this.login}/>} />
+            <Route exact path="/library" render={(props) => <Library {...props} logout={this.logout} accessType={this.state.accessType} authStatus={this.state.authenticated}/>}/>
+            <Route exact path="/book/:id" render={(props) => <Book {...props} logout={this.logout} accessType={this.state.accessType} subscribe={this.subscribe} authStatus={this.state.authenticated}/>}/>
+          </Switch>
+        </BrowserRouter>
       </>      
     )
   }

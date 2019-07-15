@@ -36,7 +36,7 @@ class Home extends Component {
       <Header pageName='Log in'/>
       <main className={style.main}>
         <form onSubmit={this.login}>
-          <button className={style.button}>Login</button>
+          <button id='login' className={style.button}>Login</button>
         </form>
       </main>
       </>
